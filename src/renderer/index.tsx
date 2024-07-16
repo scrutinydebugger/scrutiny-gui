@@ -1,9 +1,9 @@
 import { createRoot } from 'react-dom/client';
-import ScrutinyApp from '../scrutiny/ScrutinyApp';
+import App from './App';
 
 const container = document.getElementById('root') as HTMLElement;
 const root = createRoot(container);
-root.render(<ScrutinyApp />);
+root.render(<App />);
 
 /*
 Example provided by erb

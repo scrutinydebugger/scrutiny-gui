@@ -36,5 +36,5 @@ export function ScrutinyWindowArea(): React.JSX.Element {
 import React from 'react';
 
 export default function Dashboard(): React.JSX.Element {
-    return <div className="scrutinyDashboard" />;
+    return <div className="dashboard" />;
 }
