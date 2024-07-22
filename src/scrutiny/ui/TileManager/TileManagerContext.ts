@@ -19,8 +19,7 @@ interface UnserializableTileManagerInterface {
     onChange?: { (value: SerializableTileManagerData): void };
 }
 
-export type TileManagerContextType = SerializableTileManagerData &
-    UnserializableTileManagerInterface;
+export type TileManagerContextType = SerializableTileManagerData & UnserializableTileManagerInterface;
 
 export const TileManagerContext = createContext<
     | null

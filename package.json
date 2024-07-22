@@ -49,8 +49,8 @@
         "overrides": [
             {
                 "files": [
-                    ".prettierrc",
-                    ".eslintrc"
+                    ".prettierrc.json",
+                    ".eslintrc.js"
                 ],
                 "options": {
                     "parser": "json"

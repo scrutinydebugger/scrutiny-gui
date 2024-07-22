@@ -17,12 +17,7 @@ function SideMenuEntry(props: { meta: WidgetMeta }) {
 
     return (
         <div className="widget_draggable_item">
-            <img
-                src={meta.icon}
-                width={`${ICON_WIDTH}px`}
-                height={`${ICON_HEIGHT}px`}
-                alt="balbalbal todo"
-            />
+            <img src={meta.icon} width={`${ICON_WIDTH}px`} height={`${ICON_HEIGHT}px`} alt="balbalbal todo" />
             <span className="widget_draggable_label">THELABELL!!!</span>
         </div>
     );

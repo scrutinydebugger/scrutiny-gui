@@ -1,9 +1,5 @@
 {
-    "tabWidth": 4,
     "semi": false,
     "singleQuote": false,
-    "singleAttributePerLine": false,
-    "printWidth": 140,
-    "endOfLine": "lf",
-    "useTabs": false
+    "singleAttributePerLine": false
 }

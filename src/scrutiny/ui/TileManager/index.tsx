@@ -1,5 +1,8 @@
-export TileManager from './TileManager';
-export useTileManager from './useTileManager';
-export {TileTypeIndex, defineNewTileManagerRenderer } from './TileRenderer';
+import useTileManager from './useTileManager';
+import TileManager from './TileManager';
+
+export { TileTypeIndex, defineNewTileManagerRenderer } from './TileRenderer';
 export type { TileTypeDefinition } from './TileRenderer';
 export * from './ReduceTileManagerAction';
+
+export { useTileManager, TileManager };

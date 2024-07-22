@@ -23,8 +23,4 @@ export interface ActionLoadFromSerializedState {
     serialized: string;
 }
 
-export type ReduceTileManagerAction =
-    | ActionAddNewTile
-    | ActionSetMosaic
-    | ActionUpdateTileState
-    | ActionLoadFromSerializedState;
+export type ReduceTileManagerAction = ActionAddNewTile | ActionSetMosaic | ActionUpdateTileState | ActionLoadFromSerializedState;

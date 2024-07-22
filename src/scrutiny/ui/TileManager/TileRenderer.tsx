@@ -1,10 +1,7 @@
 import { MosaicBranch } from 'react-mosaic-component';
 import React from 'react';
 
-export interface TileRenderFuncProps<
-    State = any,
-    InitialState = Partial<State>,
-> {
+export interface TileRenderFuncProps<State = any, InitialState = Partial<State>> {
     tileId: string;
     path: MosaicBranch[];
     state: InitialState;

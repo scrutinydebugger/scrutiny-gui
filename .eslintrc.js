@@ -14,6 +14,8 @@ module.exports = {
         'no-unused-vars': 'off',
         '@typescript-eslint/no-unused-vars': 'error',
         'no-restricted-syntax': 'off',
+        'no-plusplus': 'off',
+        curly: 'error',
     },
     parserOptions: {
         ecmaVersion: 2022,
@@ -24,9 +26,7 @@ module.exports = {
             // See https://github.com/benmosher/eslint-plugin-import/issues/1396#issuecomment-575727774 for line below
             node: {},
             webpack: {
-                config: require.resolve(
-                    './.erb/configs/webpack.config.eslint.ts',
-                ),
+                config: require.resolve('./.erb/configs/webpack.config.eslint.ts'),
             },
             typescript: {},
         },

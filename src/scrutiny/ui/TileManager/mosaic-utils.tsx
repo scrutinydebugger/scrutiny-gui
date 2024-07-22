@@ -13,8 +13,7 @@ export function splitMosaicNode<T extends MosaicKey>(
     position: MosaicDropTargetPosition,
 ): MosaicParent<T> {
     return {
-        direction:
-            position === 'top' || position === 'bottom' ? 'column' : 'row',
+        direction: position === 'top' || position === 'bottom' ? 'column' : 'row',
         splitPercentage: 50,
         ...(position === 'top' || position === 'left'
             ? { first: newNode, second: existingNode }
@@ -53,20 +52,13 @@ export function alterMosaic(
         const nextPath = path[0];
         return {
             ...mosaic,
-            [nextPath]: alterMosaic(
-                mosaic[nextPath],
-                tileId,
-                path.slice(1),
-                position,
-            ),
+            [nextPath]: alterMosaic(mosaic[nextPath], tileId, path.slice(1), position),
             // otherwise, we should be able to navigate to the desired node
         };
     }
 
     // this should not occur
-    throw new Error(
-        'alterMosaic invalid arguments, path provided, and mosaic is not an object',
-    );
+    throw new Error('alterMosaic invalid arguments, path provided, and mosaic is not an object');
 }
 
 /**
@@ -74,18 +66,13 @@ export function alterMosaic(
  * contained into it
  */
 
-export function getMosaicTileIds<T extends MosaicKey>(
-    mosaic: MosaicNode<T> | null,
-): T[] {
+export function getMosaicTileIds<T extends MosaicKey>(mosaic: MosaicNode<T> | null): T[] {
     if (mosaic === null) {
         return [];
     }
 
     if (typeof mosaic === 'object') {
-        return [
-            ...getMosaicTileIds(mosaic.first),
-            ...getMosaicTileIds(mosaic.second),
-        ];
+        return [...getMosaicTileIds(mosaic.first), ...getMosaicTileIds(mosaic.second)];
     }
 
     return [mosaic];

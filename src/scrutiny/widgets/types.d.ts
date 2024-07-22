@@ -1,5 +1,4 @@
-import { MosaicPath } from 'react-mosaic-component';
-import { defineNewTileManagerRenderer } from '../ui/TileManager';
+import { JSX } from 'react';
 
 export interface WidgetMeta {
     name: string;

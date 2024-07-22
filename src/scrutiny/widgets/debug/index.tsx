@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { WidgetMeta } from '../types';
 import { BaseWidget, BaseWidgetProps } from '../BaseWidget';
-import { useTileManager } from '../../utils/TileManager';
+import { useTileManager } from '../../ui/TileManager';
 
 export const meta: WidgetMeta = {
     name: 'debug',
@@ -13,7 +13,7 @@ export const meta: WidgetMeta = {
     },
 };
 
-export function Widget(props: BaseWidgetProps)  {
+export function Widget(props: BaseWidgetProps) {
     const { mosaic, _tileData } = useTileManager();
     const { tileId, ...rest } = props;
     const { t } = useTranslation(`widget:${meta.name}`);
