@@ -7,4 +7,4 @@ import * as debug from './debug';
 // import * as sampleWidget from "./sampleWidget"
 
 // The order here defines the order in which they will be rendered in the Side Menu
-export default [debug] as WidgetModule[];
+export default [debug] as unknown as WidgetModule[];

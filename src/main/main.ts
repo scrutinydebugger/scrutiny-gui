@@ -26,8 +26,7 @@ if (process.env.NODE_ENV === 'production') {
     sourceMapSupport.install();
 }
 
-const isDebug =
-    process.env.NODE_ENV === 'development' || process.env.DEBUG_PROD === 'true';
+const isDebug = process.env.NODE_ENV === 'development' || process.env.DEBUG_PROD === 'true';
 
 if (isDebug) {
     require('electron-debug')();
@@ -41,7 +40,7 @@ const installExtensions = async () => {
     return installer
         .default(
             extensions.map((name) => installer[name]),
-            forceDownload,
+            { loadExtensionOptions: { allowFileAccess: true }, forceDownload },
         )
         .catch(console.log);
 };
@@ -51,9 +50,7 @@ const createWindow = async () => {
         await installExtensions();
     }
 
-    const RESOURCES_PATH = app.isPackaged
-        ? path.join(process.resourcesPath, 'assets')
-        : path.join(__dirname, '../../assets');
+    const RESOURCES_PATH = app.isPackaged ? path.join(process.resourcesPath, 'assets') : path.join(__dirname, '../../assets');
 
     const getAssetPath = (...paths: string[]): string => {
         return path.join(RESOURCES_PATH, ...paths);
@@ -63,11 +60,9 @@ const createWindow = async () => {
         show: false,
         width: 1024,
         height: 728,
-        icon: getAssetPath('img/logos/scrutiny-logo-square-64x64.png'),
+        icon: getAssetPath('icon.png'),
         webPreferences: {
-            preload: app.isPackaged
-                ? path.join(__dirname, 'preload.js')
-                : path.join(__dirname, '../../.erb/dll/preload.js'),
+            preload: app.isPackaged ? path.join(__dirname, 'preload.js') : path.join(__dirname, '../../.erb/dll/preload.js'),
         },
     });
 

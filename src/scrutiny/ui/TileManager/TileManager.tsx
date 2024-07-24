@@ -1,23 +1,23 @@
-import React, { PropsWithChildren, useCallback, useMemo, useReducer } from 'react';
+import React, { PropsWithChildren, useCallback, useReducer } from 'react';
 import reduceTileManager from './reduceTileManager';
 import { SerializableTileManagerData, TileManagerContext, TileManagerContextType } from './TileManagerContext';
 import { TileTypeIndex } from './TileRenderer';
 
 export default function TileManager(
     props: PropsWithChildren & {
-        tileTypes: () => TileTypeIndex | [() => TileTypeIndex, any[]];
+        tileTypeIndex: TileTypeIndex;
         value?: SerializableTileManagerData;
         onChange?: { (value: SerializableTileManagerData): void };
     },
 ): React.JSX.Element {
-    const { value, tileTypes, onChange } = props;
+    const { value, tileTypeIndex, onChange } = props;
     const initialContext: TileManagerContextType = {
         mosaic: null,
         nextTileId: 1,
         tileData: {},
+        tileTypeIndex,
         ...value,
         onChange,
-        tileTypes: useMemo(typeof tileTypes === 'function' ? tileTypes : tileTypes[0], typeof tileTypes === 'function' ? [] : tileTypes[1]),
     };
 
     const [context, dispatch] = useReducer(reduceTileManager, initialContext);

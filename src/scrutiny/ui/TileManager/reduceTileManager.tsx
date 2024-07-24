@@ -23,7 +23,7 @@ export default function reduceTileManager(state: TileManagerContextType, action:
                     ...state.tileData,
                     [tileId]: {
                         type: action.tileType,
-                        state: state.tileTypes[action.tileType]?.initState?.(tileId) ?? {},
+                        state: state.tileTypeIndex[action.tileType]?.initState?.(tileId) ?? {},
                     },
                 },
                 mosaic: alterMosaic(state.mosaic, tileId, action.path, action.position),

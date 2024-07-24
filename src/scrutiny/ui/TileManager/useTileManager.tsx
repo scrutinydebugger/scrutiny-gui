@@ -9,7 +9,7 @@ export default function useTileManager() {
     if (tileContext === null) {
         throw new Error('useTileManager must be used within a TileManager Component');
     }
-    const [{ mosaic, tileData, tileTypes }, { dispatch, serialize }] = tileContext;
+    const [{ mosaic, tileData, tileTypeIndex }, { dispatch, serialize }] = tileContext;
     const renderTile = useCallback(
         function renderTile(tileId: string, path: MosaicBranch[]) {
             if (!(tileId in tileData)) {
@@ -17,13 +17,13 @@ export default function useTileManager() {
             }
 
             const data = tileData[tileId];
-            if (!(data.type in tileTypes)) {
+            if (!(data.type in tileTypeIndex)) {
                 return <TileError>Unknown tile type {data.type}, not contained in current tileTypes</TileError>;
             }
 
             return (
                 <TileRenderContext.Provider value={{ tileId }}>
-                    {tileTypes[data.type].render({
+                    {tileTypeIndex[data.type].render({
                         state: data.state,
                         setState: (newState: any) => {
                             dispatch({
@@ -38,7 +38,7 @@ export default function useTileManager() {
                 </TileRenderContext.Provider>
             );
         },
-        [tileData, tileTypes, dispatch],
+        [tileData, tileTypeIndex, dispatch],
     );
 
     const clearAll = useCallback(() => dispatch({ action: 'setMosaic', value: null }), [dispatch]);

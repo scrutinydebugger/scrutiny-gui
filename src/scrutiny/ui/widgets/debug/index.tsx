@@ -1,11 +1,12 @@
 import { useTranslation } from 'react-i18next';
-import { WidgetMeta } from '../types';
-import { BaseWidget, BaseWidgetProps } from '../BaseWidget';
-import { useTileManager } from '../../ui/TileManager';
 
-export const meta: WidgetMeta = {
+import reactIcon from '@scrutiny/assets/img/react-192x192.png';
+import useTileManager from '@scrutiny/ui/TileManager/useTileManager';
+import { BaseWidget, BaseWidgetProps, WidgetDefinition } from '@scrutiny/ui/widgets/BaseWidget';
+
+export const definition: WidgetDefinition = {
     name: 'debug',
-    icon: 'logo192.png',
+    icon: reactIcon,
     translations: {
         en: {
             display_name: 'Debug',
@@ -13,10 +14,10 @@ export const meta: WidgetMeta = {
     },
 };
 
-export function Widget(props: BaseWidgetProps) {
+export default function Widget(props: BaseWidgetProps) {
     const { mosaic, _tileData } = useTileManager();
     const { tileId, ...rest } = props;
-    const { t } = useTranslation(`widget:${meta.name}`);
+    const { t } = useTranslation(`widget:${definition.name}`);
     return (
         /* eslint-disable react/jsx-props-no-spreading */
         <BaseWidget {...rest} title={`${t('display_name')} #${tileId}`}>

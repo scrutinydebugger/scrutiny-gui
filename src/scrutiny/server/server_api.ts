@@ -1,60 +1,17 @@
-type sintType =
-    | 'sint8'
-    | 'sint16'
-    | 'sint32'
-    | 'sint64'
-    | 'sint128'
-    | 'sint256';
-type uintType =
-    | 'uint8'
-    | 'uint16'
-    | 'uint32'
-    | 'uint64'
-    | 'uint128'
-    | 'uint256';
-type floatType =
-    | 'float8'
-    | 'float16'
-    | 'float32'
-    | 'float64'
-    | 'float128'
-    | 'float256';
-type cfloatType =
-    | 'cfloat8'
-    | 'cfloat16'
-    | 'cfloat32'
-    | 'cfloat64'
-    | 'cfloat128'
-    | 'cfloat256';
+type sintType = 'sint8' | 'sint16' | 'sint32' | 'sint64' | 'sint128' | 'sint256';
+type uintType = 'uint8' | 'uint16' | 'uint32' | 'uint64' | 'uint128' | 'uint256';
+type floatType = 'float8' | 'float16' | 'float32' | 'float64' | 'float128' | 'float256';
+type cfloatType = 'cfloat8' | 'cfloat16' | 'cfloat32' | 'cfloat64' | 'cfloat128' | 'cfloat256';
 
-export type ValueDataType =
-    | sintType
-    | uintType
-    | floatType
-    | cfloatType
-    | 'boolean';
-export type ServerDeviceStatus =
-    | 'unknown'
-    | 'disconnected'
-    | 'connecting'
-    | 'connected'
-    | 'connected_ready';
+export type ValueDataType = sintType | uintType | floatType | cfloatType | 'boolean';
+export type ServerDeviceStatus = 'unknown' | 'disconnected' | 'connecting' | 'connected' | 'connected_ready';
 export type WatchableType = 'rpv' | 'var' | 'alias';
 
 export namespace Datalogging {
     export type Encoding = 'raw';
     export type SamplingRateType = 'fixed_freq' | 'variable_freq';
     export type XAxisType = 'ideal_time' | 'measured_time' | 'signal';
-    export type TriggerType =
-        | 'true'
-        | 'eq'
-        | 'neq'
-        | 'gt'
-        | 'get'
-        | 'lt'
-        | 'let'
-        | 'cmt'
-        | 'within';
+    export type TriggerType = 'true' | 'eq' | 'neq' | 'gt' | 'get' | 'lt' | 'let' | 'cmt' | 'within';
     export type OperandType = 'literal' | 'watchable';
 
     export interface Operand {
@@ -81,13 +38,7 @@ export namespace Datalogging {
         sampling_rates: SamplingRate[];
     }
 
-    export type DataloggerState =
-        | 'unavailable'
-        | 'standby'
-        | 'waiting_for_trigger'
-        | 'acquiring'
-        | 'data_ready'
-        | 'error';
+    export type DataloggerState = 'unavailable' | 'standby' | 'waiting_for_trigger' | 'acquiring' | 'data_ready' | 'error';
     export interface DataloggingStatus {
         datalogger_state: DataloggerState;
         completion_ratio: number | null;
@@ -218,8 +169,7 @@ export namespace Message {
             x_axis_type: Datalogging.XAxisType;
             x_axis_signal: Datalogging.SignalDefinition | null;
         }
-        export interface ReadDataloggingAcquisitionContent
-            extends BaseC2SMessage {
+        export interface ReadDataloggingAcquisitionContent extends BaseC2SMessage {
             reference_id: string;
         }
     }
@@ -256,8 +206,7 @@ export namespace Message {
             }[];
         }
 
-        export interface GetDataloggingCapabilitiesResponse
-            extends BaseS2CMessage {
+        export interface GetDataloggingCapabilitiesResponse extends BaseS2CMessage {
             available: boolean;
             capabilities: Datalogging.Capabilities | null;
         }
@@ -266,16 +215,14 @@ export namespace Message {
             request_token: string;
         }
 
-        export interface InformDataloggingAcquisitionComplete
-            extends BaseS2CMessage {
+        export interface InformDataloggingAcquisitionComplete extends BaseS2CMessage {
             request_token: string;
             reference_id: string | null;
             success: boolean;
             detail_msg: string;
         }
 
-        export interface ReadDataloggingAcquisitionContent
-            extends BaseS2CMessage {
+        export interface ReadDataloggingAcquisitionContent extends BaseS2CMessage {
             reference_id: string;
             trigger_index: number | null;
             yaxes: Datalogging.AxisDef[];

@@ -1,0 +1,39 @@
+{
+    "name": "scrutiny-gui",
+    "version": "0.0.1",
+    "description": "Scrutiny Debugger GUI client",
+    "keywords": [
+        "scrutiny",
+        "runtime debugger",
+        "calibration tool",
+        "debugger"
+    ],
+    "homepage": "https://scrutinydebugger.com",
+    "bugs": {
+        "url": "https://github.com/scrutinydebugger/scrutiny-gui/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/scrutinydebugger/scrutiny-gui.git"
+    },
+    "license": "MIT",
+    "author": {
+        "name": "Scrutiny Debugger",
+        "email": "scrutinydebugger@gmail.com",
+        "url": "https://scrutinydebugger.com"
+    },
+    "contributors": [
+        {
+            "name": "Pier-Yves Lessard",
+            "email": "py.lessard@gmail.com",
+            "url": "https://github.com/pylessard"
+        }
+    ],
+    "main": "./dist/main/main.js",
+    "scripts": {
+        "rebuild": "node -r ts-node/register ../../.erb/scripts/electron-rebuild.js",
+        "postinstall": "npm run rebuild && npm run link-modules",
+        "link-modules": "node -r ts-node/register ../../.erb/scripts/link-modules.ts"
+    },
+    "dependencies": {}
+}

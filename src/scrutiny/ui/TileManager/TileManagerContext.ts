@@ -1,7 +1,7 @@
 import { MosaicNode } from 'react-mosaic-component';
 import React, { createContext } from 'react';
 import { ReduceTileManagerAction } from './ReduceTileManagerAction';
-import { TileTypes } from './TileRenderer';
+import { TileTypeIndex } from './TileRenderer';
 
 export interface TileData {
     state: any;
@@ -15,7 +15,7 @@ export interface SerializableTileManagerData {
 }
 
 interface UnserializableTileManagerInterface {
-    tileTypes: TileTypes;
+    tileTypeIndex: TileTypeIndex;
     onChange?: { (value: SerializableTileManagerData): void };
 }
 
